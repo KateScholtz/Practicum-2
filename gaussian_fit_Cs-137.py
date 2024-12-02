@@ -14,13 +14,13 @@ sum_counts_peak = 0
 sum_counts = 0
 
 row_count = 0 
-with open('spectrum_Cs-137.csv', 'r') as spectrum_Cs_137:
+with open('spectrum_Mushrooms_HPGe.csv', 'r') as spectrum_Mushrooms_HPGe:
 
-    for row in spectrum_Cs_137:
+    for row in spectrum_Mushrooms_HPGe:
         if row_count > 0:
             data_splitted = row.split(',')
 
-            if float(data_splitted[0]) > 200 and float(data_splitted[0]) < 300:
+            if float(data_splitted[0]) > 280 and float(data_splitted[0]) < 300:
                 sum_counts_peak += float(data_splitted[1])
             sum_counts += float(data_splitted[1])
 
@@ -36,7 +36,7 @@ counts = np.array(L_counts)
 initial_guess = [max(counts), pulse_heights[np.argmax(counts)], 10]  # Initial guess for A, mu, sigma
 popt, pcov = curve_fit(gaussian, pulse_heights, counts, p0=initial_guess)
 
-# Extract fitted parameters
+# Extract fritted parameters
 A, mu, sigma = popt
 fwhm = 2.355 * sigma  # Calculate FWHM from sigma
 
@@ -60,3 +60,5 @@ plt.title(f"Photo-peak fit and resolution calculation\nResolution: {resolution:.
 plt.legend()
 plt.show()
 
+print(f"total counts: {sum_counts}")
+print(f"counts in peak: {sum_counts_peak}")
