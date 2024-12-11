@@ -14,13 +14,13 @@ sum_counts_peak = 0
 sum_counts = 0
 
 row_count = 0 
-with open('spectrum_Mushrooms_HPGe.csv', 'r') as spectrum_Mushrooms_HPGe:
+with open('Last_day_spectrum_Watch_HPGe.csv', 'r') as Last_day_spectrum_Watch_HPGe:
 
-    for row in spectrum_Mushrooms_HPGe:
+    for row in Last_day_spectrum_Watch_HPGe:
         if row_count > 0:
             data_splitted = row.split(',')
 
-            if float(data_splitted[0]) > 280 and float(data_splitted[0]) < 300:
+            if float(data_splitted[0]) > 93 and float(data_splitted[0]) < 101:
                 sum_counts_peak += float(data_splitted[1])
             sum_counts += float(data_splitted[1])
 
