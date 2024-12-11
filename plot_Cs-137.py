@@ -24,9 +24,11 @@ with open('spectrum_Mushrooms_HPGe.csv', 'r') as spectrum_Cs_137:
 
 plt.fill_between(L_pulseheight_keV, L_counts, color='blue', alpha=0.8)
 plt.plot(L_pulseheight_keV, L_counts, color = 'blue')
+plt.axvline(x=661, color='red', linestyle='--', linewidth=1, label='Estimated photo peak of Cs-137')  # Add dotted line
 plt.xlabel('Pulseheight (keV)')
 plt.ylabel('Counts')
-plt.xlim(0,2000)  
+plt.xlim(0,1250)  
 plt.ylim(bottom=0)
-plt.title("Spectrum of Mushrooms (Cs-137)")
+plt.legend()  # Add legend to display the label
 plt.savefig("plot Cs-137.png")
+# plt.show()
